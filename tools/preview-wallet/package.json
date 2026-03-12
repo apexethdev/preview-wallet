@@ -1,0 +1,12 @@
+{
+  "name": "preview-wallet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=../../.env.local src/server/index.mjs",
+    "check": "node --check src/server/index.mjs && node --check src/runtime/index.mjs && node --check src/client.js && node --check src/browser/bridge.js && node --check src/browser/provider.js && node --check src/browser/mount.js && node --check src/browser/overlay.js"
+  },
+  "dependencies": {
+    "viem": "^2.46.2"
+  }
+}

@@ -1,54 +1,70 @@
-# Preview Wallet
+# Preview Wallet Example App
 
-Local development wallet sidecar for Next.js and other browser apps.
+This repository now represents a Next.js app with a colocated wallet sidecar at `tools/preview-wallet`.
 
-Preview Wallet exposes:
+The app owns the root `.env.local`. The wallet remains a separate local process, but it loads the same root env file instead of keeping a second wallet-specific env file.
 
-- a local signer runtime
-- an injected EIP-1193/EIP-6963 browser provider
-- a Shadow DOM approval overlay
+## Layout
 
-The private key stays in the local runtime process. The browser bundle only gets provider behavior.
+```text
+app/
+tools/
+  preview-wallet/
+.env.local
+package.json
+```
 
 ## Setup
 
-1. Install dependencies:
+1. Install the app dependencies:
 
 ```bash
 npm install
 ```
 
-2. Create a local env file:
+2. Install the wallet tool dependencies:
+
+```bash
+npm run wallet:install
+```
+
+3. Create the app-root env file:
 
 ```bash
 cp .env.local.example .env.local
 ```
 
-3. Fill in `.env.local`:
+4. Fill in `.env.local`:
 
 ```bash
+NEXT_PUBLIC_PREVIEW_WALLET_ENABLED=true
+NEXT_PUBLIC_PREVIEW_WALLET_URL=http://127.0.0.1:43199/client.js
+
 PREVIEW_WALLET_PRIVATE_KEY=0x...
-NEXT_PUBLIC_NETWORK=sepolia
-BSEP_RPC_URL=https://sepolia.base.org
+PREVIEW_WALLET_NETWORK=sepolia
+PREVIEW_WALLET_RPC_URL=https://sepolia.base.org
 ```
 
-4. Start the sidecar:
+5. Start both processes together:
 
 ```bash
-npm start
+npm run dev:wallet
 ```
 
-Default endpoints:
+Or start them separately:
 
-- `http://127.0.0.1:43199/health`
-- `http://127.0.0.1:43199/client.js`
+```bash
+npm run dev
+npm run wallet:start
+```
 
-## Consuming From A Next.js App
+## How It Works
 
-In the app repo:
+- The Next app loads `NEXT_PUBLIC_PREVIEW_WALLET_URL` in development.
+- The sidecar runs from `tools/preview-wallet`.
+- The private key stays in the wallet runtime process, not in the browser bundle.
+- The wallet exposes:
+  - `http://127.0.0.1:43199/health`
+  - `http://127.0.0.1:43199/client.js`
 
-- add a tiny client host component that loads `NEXT_PUBLIC_PREVIEW_WALLET_URL`
-- gate it behind `NEXT_PUBLIC_PREVIEW_WALLET_ENABLED=true`
-- start the app and this repo together in local dev
-
-See [`examples/next`](./examples/next) for the minimal host pattern.
+For wallet internals, see [`tools/preview-wallet/README.md`](./tools/preview-wallet/README.md).

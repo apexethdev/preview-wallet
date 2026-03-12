@@ -19,15 +19,12 @@ function rpcError(code, message, data) {
 }
 
 function getConfiguredChain() {
-  const network = process.env.NEXT_PUBLIC_NETWORK || "mainnet";
+  const network = process.env.PREVIEW_WALLET_NETWORK || "mainnet";
   return network === "sepolia" ? baseSepolia : base;
 }
 
 function getRpcUrl(chain) {
-  if (chain.id === baseSepolia.id) {
-    return process.env.BSEP_RPC_URL || process.env.BASE_RPC_URL;
-  }
-  return process.env.BASE_RPC_URL;
+  return process.env.PREVIEW_WALLET_RPC_URL;
 }
 
 function normalizeChainId(chainId) {

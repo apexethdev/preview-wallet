@@ -1,12 +1,23 @@
 {
-  "name": "preview-wallet",
+  "name": "preview-wallet-next-example",
   "private": true,
-  "type": "module",
   "scripts": {
-    "start": "node --env-file-if-exists=.env.local src/server/index.mjs",
-    "check": "node --check src/server/index.mjs && node --check src/runtime/index.mjs && node --check src/client.js && node --check src/browser/bridge.js && node --check src/browser/provider.js && node --check src/browser/mount.js && node --check src/browser/overlay.js"
+    "dev": "next dev",
+    "wallet:install": "npm --prefix tools/preview-wallet install",
+    "wallet:start": "npm --prefix tools/preview-wallet start",
+    "wallet:check": "npm --prefix tools/preview-wallet run check",
+    "check": "npm run wallet:check && tsc --noEmit",
+    "dev:wallet": "concurrently -k -n app,wallet -c blue,green \"npm run dev\" \"npm run wallet:start\""
   },
   "dependencies": {
-    "viem": "^2.46.2"
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "25.4.0",
+    "@types/react": "19.2.14",
+    "concurrently": "^9.2.1",
+    "typescript": "5.9.3"
   }
 }
