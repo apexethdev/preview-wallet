@@ -1,0 +1,15 @@
+{
+  "name": "preview-wallet-repo",
+  "private": true,
+  "scripts": {
+    "demo:install": "npm --prefix examples/next-demo install && npm --prefix tools/preview-wallet install",
+    "demo:dev": "concurrently -k -n wallet,app -c green,blue \"npm --prefix tools/preview-wallet start\" \"npm --prefix examples/next-demo run dev\"",
+    "demo:check": "npm run wallet:check && npm --prefix examples/next-demo run check",
+    "wallet:start": "npm --prefix tools/preview-wallet start",
+    "wallet:check": "npm --prefix tools/preview-wallet run check && npm --prefix tools/preview-wallet run test && node scripts/check-preview-wallet-sync.mjs",
+    "wallet:sync": "node scripts/sync-preview-wallet.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
