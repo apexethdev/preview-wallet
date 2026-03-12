@@ -5,6 +5,8 @@ This folder shows the minimal host pattern for a Next.js app.
 ## App Env
 
 ```bash
+cp .env.local.example .env.local
+
 NEXT_PUBLIC_PREVIEW_WALLET_ENABLED=true
 NEXT_PUBLIC_PREVIEW_WALLET_URL=http://127.0.0.1:43199/client.js
 ```

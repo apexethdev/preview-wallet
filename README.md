@@ -18,15 +18,21 @@ The private key stays in the local runtime process. The browser bundle only gets
 npm install
 ```
 
-2. Configure env:
+2. Create a local env file:
+
+```bash
+cp .env.local.example .env.local
+```
+
+3. Fill in `.env.local`:
 
 ```bash
 PREVIEW_WALLET_PRIVATE_KEY=0x...
 NEXT_PUBLIC_NETWORK=sepolia
-BSEP_RPC_URL=https://your-base-sepolia-rpc
+BSEP_RPC_URL=https://sepolia.base.org
 ```
 
-3. Start the sidecar:
+4. Start the sidecar:
 
 ```bash
 npm start
