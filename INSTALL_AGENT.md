@@ -19,6 +19,15 @@ and Claude Code preview browsers.
 Do not use this v1 flow for Pages Router apps or apps without an existing
 RainbowKit/wagmi setup.
 
+Most examples below use `app/`, but many production apps use `src/app/`.
+
+Use whichever matches the target app:
+
+- `app/PreviewWalletHost.tsx` and `app/layout.tsx`
+- `src/app/PreviewWalletHost.tsx` and `src/app/layout.tsx`
+
+The integration is the same either way. Only the file paths change.
+
 ## Source repo inputs
 
 Assume the public repository has already been cloned locally. Use these source
@@ -43,6 +52,9 @@ Copy:
 
 Do not rename the copied `tools/preview-wallet` folder in v1.
 
+If the target app uses `src/app`, copy the host file to
+`<target-app>/src/app/PreviewWalletHost.tsx` instead.
+
 ### 2. Merge env values into the target app
 
 Append these entries to `<target-app>/.env.local`:
@@ -64,6 +76,11 @@ Optional overrides:
 ```
 
 Use a disposable dev-only private key.
+
+`PREVIEW_WALLET_NETWORK=sepolia` means Base Sepolia.
+
+`NEXT_PUBLIC_*` values are compiled into the app bundle, so restart the Next.js
+dev server after adding or changing them.
 
 ### 3. Add package scripts to the target app root
 
@@ -108,6 +125,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 Do not add a second `wagmi` or RainbowKit provider. This integration assumes
 the target app already has that stack.
 
+If the target app uses `src/app`, make the same change in
+`<target-app>/src/app/layout.tsx` instead.
+
 ### 5. Install sidecar dependencies
 
 From `<target-app>`:
@@ -142,6 +162,21 @@ Confirm all of the following:
 5. Connecting succeeds.
 6. A sign-message action opens the approval overlay within about 1 second.
 
+Use this as the canonical smoke test:
+
+1. Open the app in an embedded preview browser.
+2. Open the RainbowKit connect modal.
+3. Confirm `Preview Wallet` appears in the wallet list.
+4. Connect `Preview Wallet`.
+5. Navigate to a page that performs a real wallet action, such as sign message.
+6. Trigger signing.
+7. Confirm the Preview Wallet approval overlay appears.
+8. Approve the request.
+9. Confirm the app advances into the expected connected or signed-in state.
+
+This is a stronger verification path than checking only `/health` and
+`/client.js`.
+
 ## Failure handling
 
 ### Sidecar not reachable
@@ -154,7 +189,7 @@ Confirm all of the following:
 
 - Missing `NEXT_PUBLIC_PREVIEW_WALLET_ENABLED` or `NEXT_PUBLIC_PREVIEW_WALLET_URL` means the browser host will not load the wallet bundle.
 - Missing `PREVIEW_WALLET_PRIVATE_KEY` or `PREVIEW_WALLET_RPC_URL` means the sidecar will start but report an unconfigured state.
-- `PREVIEW_WALLET_NETWORK` only supports `sepolia` in v1.
+- `PREVIEW_WALLET_NETWORK` only supports `sepolia` in v1, which means Base Sepolia.
 
 ### Port already in use
 
@@ -165,8 +200,10 @@ Confirm all of the following:
 ### Wallet not showing in RainbowKit
 
 - Confirm the app already has working `wagmi` + RainbowKit providers.
-- Confirm `PreviewWalletHost` is rendered in `app/layout.tsx`.
+- Confirm `PreviewWalletHost` is rendered in the root App Router layout, either `app/layout.tsx` or `src/app/layout.tsx`.
 - Confirm the browser successfully loads `NEXT_PUBLIC_PREVIEW_WALLET_URL`.
+- Confirm `NEXT_PUBLIC_PREVIEW_WALLET_ENABLED=true`.
+- Restart the Next.js dev server after adding or changing `NEXT_PUBLIC_*` values.
 
 ### Unsupported target app
 
