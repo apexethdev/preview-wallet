@@ -22,7 +22,7 @@ export default function Page() {
     <main className="page-shell">
       <section className="hero">
         <p className="eyebrow">Colocated Dev Wallet</p>
-        <h1>Run the wallet from <code>tools/preview-wallet</code>, not outside the app repo.</h1>
+        <h1>Preview Wallet lives in <code>tools/preview-wallet</code>.</h1>
         <p className="lede">
           This example shows the intended in-repo setup: the Next.js app stays at the
           repository root, while the wallet sidecar lives under <code>tools/preview-wallet</code>
@@ -30,32 +30,31 @@ export default function Page() {
         </p>
       </section>
 
-      <section className="panel-grid">
-        <article className="panel">
-          <h2>Repository shape</h2>
-          <p>The app owns the root env file. The wallet remains a separate localhost process.</p>
-          <pre>{layoutSnippet}</pre>
-        </article>
-
-        <article className="panel">
-          <h2>Root env contract</h2>
-          <p>Only the browser-facing values use <code>NEXT_PUBLIC_*</code>. Wallet runtime values stay server-only.</p>
-          <pre>{envSnippet}</pre>
-        </article>
-
-        <article className="panel">
-          <h2>Developer flow</h2>
-          <p>Install both packages once, then boot app and wallet together from the app root.</p>
-          <pre>{commandSnippet}</pre>
-        </article>
-
-        <article className="panel">
-          <h2>What the app loads</h2>
+      <section className="panel-stack">
+        <article className="panel panel-summary">
+          <h2>How this setup works</h2>
           <p>
-            The host component injects <code>NEXT_PUBLIC_PREVIEW_WALLET_URL</code> in local
-            development. The signer and approval overlay stay inside the sidecar process and
-            its served browser bundle.
+            The app owns the root <code>.env.local</code>. The wallet remains a separate
+            localhost process under <code>tools/preview-wallet</code>, and the host component
+            injects <code>NEXT_PUBLIC_PREVIEW_WALLET_URL</code> only in local development.
           </p>
+
+          <div className="summary-block">
+            <h3>Repository shape</h3>
+            <pre>{layoutSnippet}</pre>
+          </div>
+
+          <div className="summary-block">
+            <h3>Root env contract</h3>
+            <p>Only browser-facing values use <code>NEXT_PUBLIC_*</code>. Wallet runtime values stay server-only.</p>
+            <pre>{envSnippet}</pre>
+          </div>
+
+          <div className="summary-block">
+            <h3>Developer flow</h3>
+            <p>Install both packages once, then boot app and wallet together from the app root.</p>
+            <pre>{commandSnippet}</pre>
+          </div>
         </article>
       </section>
     </main>
