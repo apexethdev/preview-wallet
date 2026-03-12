@@ -71,8 +71,12 @@ pre {
   padding: 0;
 }
 
+.connect-section {
+  margin-bottom: 40px;
+}
+
 .lede {
-  margin: 0 0 48px;
+  margin: 0 0 24px;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.7;

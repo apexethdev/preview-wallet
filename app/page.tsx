@@ -1,3 +1,7 @@
+"use client";
+
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 const layoutSnippet = `your-app/
   app/
   tools/
@@ -29,6 +33,10 @@ export default function Page() {
         lives under <code>tools/preview-wallet</code> and reads the same
         root <code>.env.local</code>.
       </p>
+
+      <div className="connect-section">
+        <ConnectButton />
+      </div>
 
       <hr className="divider" />
 

@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 import PreviewWalletHost from "./PreviewWalletHost";
+import Providers from "./providers";
+import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
 
 export const metadata = {
@@ -13,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <PreviewWalletHost />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
