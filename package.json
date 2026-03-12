@@ -10,9 +10,13 @@
     "dev:wallet": "concurrently -k -n app,wallet -c blue,green \"npm run dev\" \"npm run wallet:start\""
   },
   "dependencies": {
+    "@rainbow-me/rainbowkit": "^2.2.10",
+    "@tanstack/react-query": "^5.90.21",
     "next": "^16.1.6",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "viem": "^2.47.2",
+    "wagmi": "^2.19.5"
   },
   "devDependencies": {
     "@types/node": "25.4.0",
