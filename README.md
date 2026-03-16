@@ -35,6 +35,9 @@ cp apps/next-demo/.env.local.example apps/next-demo/.env.local
 npm run demo:dev
 ```
 
+The demo uses a single env file at `apps/next-demo/.env.local` for both the
+Next.js app and the local wallet sidecar.
+
 ### 2. Use the package in another app
 
 Start with [INSTALL_AGENT.md](./INSTALL_AGENT.md).

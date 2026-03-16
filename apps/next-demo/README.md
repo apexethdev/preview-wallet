@@ -20,6 +20,9 @@ npm run demo:dev
 
 The app runs on `http://localhost:3000`.
 
+The wallet sidecar reads the same `apps/next-demo/.env.local` file when started
+from the repo root, so the demo only needs one env file.
+
 The demo uses `next dev --webpack` for local development to avoid current
 Turbopack instability in this repo layout.
 
