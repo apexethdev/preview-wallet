@@ -6,6 +6,8 @@
     "packages/*"
   ],
   "scripts": {
+    "start:demo": "npm --workspace @preview-wallet/next-demo run dev",
+    "start:wallet": "npm --workspace @preview-wallet/next-demo run wallet:start",
     "demo:check": "npm run wallet:check && npm --workspace @preview-wallet/next-demo run check",
     "wallet:check": "npm --workspace @preview-wallet/wallet run check && npm --workspace @preview-wallet/wallet run test",
     "package:pack": "npm pack --workspace @preview-wallet/wallet"

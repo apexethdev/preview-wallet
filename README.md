@@ -54,6 +54,13 @@ npm run dev
 npm run wallet:start
 ```
 
+Or run the same two processes from the repository root:
+
+```bash
+npm run start:demo
+npm run start:wallet
+```
+
 ### 2. Use the package in another app
 
 Use [next-demo/README.md](./next-demo/README.md) as the integration
