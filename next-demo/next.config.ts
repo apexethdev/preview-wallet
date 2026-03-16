@@ -4,7 +4,7 @@ import path from "node:path";
 const nextConfig: NextConfig = {
   transpilePackages: ["@preview-wallet/wallet"],
   turbopack: {
-    root: path.join(__dirname, "../.."),
+    root: path.join(__dirname, ".."),
   },
   webpack: (config) => {
     config.resolve.alias = {

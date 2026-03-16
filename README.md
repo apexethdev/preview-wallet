@@ -17,13 +17,12 @@ extensions are unavailable or awkward, such as Cursor preview tabs and Claude
 Code preview browsers.
 
 The package source lives in `packages/preview-wallet`. The reference app that
-consumes it lives in `apps/next-demo`.
+consumes it lives in `next-demo`.
 
 ## Repository layout
 
 ```text
-apps/
-  next-demo/
+next-demo/
 packages/
   preview-wallet/
 ```
@@ -41,14 +40,14 @@ npm install
 Then switch to the demo app directory:
 
 ```bash
-cd apps/next-demo
+cd next-demo
 cp .env.local.example .env.local
 ```
 
-The demo uses a single env file at `apps/next-demo/.env.local` for both the
+The demo uses a single env file at `next-demo/.env.local` for both the
 Next.js app and the local wallet sidecar.
 
-Start the demo in separate terminals from `apps/next-demo`:
+Start the demo in separate terminals from `next-demo`:
 
 ```bash
 npm run dev
@@ -57,7 +56,7 @@ npm run wallet:start
 
 ### 2. Use the package in another app
 
-Use [apps/next-demo/README.md](./apps/next-demo/README.md) as the integration
+Use [next-demo/README.md](./next-demo/README.md) as the integration
 reference. It contains both the runnable demo flow and the package wiring steps
 for another Next.js app.
 
