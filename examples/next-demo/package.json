@@ -2,7 +2,7 @@
   "name": "preview-wallet-next-demo",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "wallet:install": "npm --prefix ../../tools/preview-wallet install",
