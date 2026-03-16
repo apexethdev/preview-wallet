@@ -1,31 +1,41 @@
 # Preview Wallet
 
-This repository is structured for GitHub-based installation into an existing
-Next.js App Router app that already uses `wagmi` and RainbowKit.
+This repository is an npm workspace monorepo centered on the
+`@preview-wallet/wallet` package.
 
 It is specifically aimed at in-built preview-browser environments where browser
 extensions are unavailable or awkward, such as Cursor preview tabs and Claude
 Code preview browsers.
 
-The canonical integration lives in `integration/next-app-router-wagmi`. The
-demo app lives in `examples/next-demo`.
+The publishable package lives in `packages/preview-wallet`. The reference app
+that consumes it lives in `apps/next-demo`.
 
 ## Repository layout
 
 ```text
+apps/
+  next-demo/
+packages/
+  preview-wallet/
 integration/
   next-app-router-wagmi/
-examples/
-  next-demo/
-tools/
-  preview-wallet/
 INSTALL_AGENT.md
 USE_AGENT.md
 ```
 
-## Use this repo in two ways
+## Use this repo
 
-### 1. Install into another app
+### 1. Run the demo
+
+From the repository root:
+
+```bash
+npm install
+cp apps/next-demo/.env.local.example apps/next-demo/.env.local
+npm run demo:dev
+```
+
+### 2. Use the package in another app
 
 Start with [INSTALL_AGENT.md](./INSTALL_AGENT.md).
 
@@ -33,34 +43,9 @@ That flow assumes:
 
 - Next.js App Router
 - existing `wagmi` + RainbowKit providers
-- copy-based installation from this GitHub repo
+- package-based installation via `@preview-wallet/wallet`
 - an in-built preview browser where you want a local injected wallet without a
   browser extension
-
-The files an agent should copy live under
-`integration/next-app-router-wagmi/`.
-
-### 2. Run the reference demo
-
-The demo proves the documented integration contract in a working app.
-
-From the repository root:
-
-```bash
-npm install
-npm run demo:install
-npm run demo:dev
-```
-
-Or work directly in `examples/next-demo`:
-
-```bash
-cd examples/next-demo
-npm install
-npm run wallet:install
-cp .env.local.example .env.local
-npm run dev:wallet
-```
 
 ## Verification
 
@@ -69,6 +54,7 @@ Useful local checks:
 ```bash
 npm run demo:check
 npm run wallet:check
+npm run package:pack
 ```
 
 Expected local endpoints while running:

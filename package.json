@@ -1,15 +1,19 @@
 {
   "name": "preview-wallet-repo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "demo:install": "npm --prefix examples/next-demo install && npm --prefix tools/preview-wallet install",
-    "demo:dev": "concurrently -k -n wallet,app -c green,blue \"npm --prefix tools/preview-wallet start\" \"npm --prefix examples/next-demo run dev\"",
-    "demo:check": "npm run wallet:check && npm --prefix examples/next-demo run check",
-    "wallet:start": "npm --prefix tools/preview-wallet start",
-    "wallet:check": "npm --prefix tools/preview-wallet run check && npm --prefix tools/preview-wallet run test && node scripts/check-preview-wallet-sync.mjs",
-    "wallet:sync": "node scripts/sync-preview-wallet.mjs"
+    "demo:dev": "concurrently -k -n wallet,app -c green,blue \"npm --workspace @preview-wallet/wallet run dev\" \"npm --workspace @preview-wallet/next-demo run dev\"",
+    "demo:check": "npm run wallet:check && npm --workspace @preview-wallet/next-demo run check",
+    "wallet:start": "npm --workspace @preview-wallet/wallet run start",
+    "wallet:check": "npm --workspace @preview-wallet/wallet run check && npm --workspace @preview-wallet/wallet run test",
+    "package:pack": "npm pack --workspace @preview-wallet/wallet"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
