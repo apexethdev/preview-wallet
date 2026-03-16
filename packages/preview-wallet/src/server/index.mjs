@@ -68,16 +68,7 @@ export function createPreviewWalletServer({
   port = PORT,
   runtime = new PreviewWalletRuntime(),
 } = {}) {
-  let clientBundlePromise = null;
-  const getClientBundle = () => {
-    if (!clientBundlePromise) {
-      clientBundlePromise = buildClientBundle(host, port).catch((error) => {
-        clientBundlePromise = null;
-        throw error;
-      });
-    }
-    return clientBundlePromise;
-  };
+  const getClientBundle = () => buildClientBundle(host, port);
 
   const server = createServer(async (req, res) => {
     try {

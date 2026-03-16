@@ -73,11 +73,13 @@
     }
 
     handleSnapshot(snapshot) {
+      const hadPending = this.state?.pendingRequests?.length > 0;
+      const hasPending = snapshot?.pendingRequests?.length > 0;
       this.state = snapshot;
 
-      if (snapshot?.pendingRequests?.length) {
+      if (hasPending && !hadPending) {
         this.isExpanded = true;
-      } else if (!this.activeRequestId) {
+      } else if (!hasPending && hadPending && !this.activeRequestId) {
         this.isExpanded = false;
       }
 
