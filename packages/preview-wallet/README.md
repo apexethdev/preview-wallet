@@ -25,6 +25,16 @@ Start the sidecar:
 preview-wallet
 ```
 
+In a Next.js app, a common script is:
+
+```json
+{
+  "scripts": {
+    "wallet:start": "preview-wallet"
+  }
+}
+```
+
 Render the browser host in a client-capable Next.js layout:
 
 ```tsx

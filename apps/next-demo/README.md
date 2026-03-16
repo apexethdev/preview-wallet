@@ -11,22 +11,28 @@ It uses:
 
 ## Start the demo
 
-From the repository root:
+Install workspace dependencies once from the repository root:
 
 ```bash
 npm install
-cp apps/next-demo/.env.local.example apps/next-demo/.env.local
+```
+
+Then run the demo from `apps/next-demo`:
+
+```bash
+cd apps/next-demo
+cp .env.local.example .env.local
 ```
 
 The app runs on `http://localhost:3000`.
 
-The wallet sidecar reads the same `apps/next-demo/.env.local` file when started
-from the repo root, so the demo only needs one env file.
+The wallet sidecar reads the same local `.env.local` file, so the demo only
+needs one env file.
 
-Start the app and wallet in separate terminals:
+Start the app and wallet in separate terminals from `apps/next-demo`:
 
 ```bash
-npm run demo:dev
+npm run dev
 npm run wallet:start
 ```
 

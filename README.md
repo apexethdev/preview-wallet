@@ -32,20 +32,26 @@ packages/
 
 ### 1. Run the demo
 
-From the repository root:
+Install workspace dependencies from the repository root:
 
 ```bash
 npm install
-cp apps/next-demo/.env.local.example apps/next-demo/.env.local
+```
+
+Then switch to the demo app directory:
+
+```bash
+cd apps/next-demo
+cp .env.local.example .env.local
 ```
 
 The demo uses a single env file at `apps/next-demo/.env.local` for both the
 Next.js app and the local wallet sidecar.
 
-Start the demo in separate terminals:
+Start the demo in separate terminals from `apps/next-demo`:
 
 ```bash
-npm run demo:dev
+npm run dev
 npm run wallet:start
 ```
 
