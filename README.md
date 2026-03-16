@@ -1,5 +1,9 @@
 # Preview Wallet
 
+<p align="center">
+  <img src="./assets/main.png" alt="Preview Wallet" width="700" />
+</p>
+
 A local wallet sidecar for Next.js apps running in preview browsers (Cursor,
 Claude Code) where browser extensions are unavailable.
 
@@ -11,6 +15,10 @@ wagmi).
 ```bash
 npm install @apexethdev/preview-wallet
 ```
+
+<p align="center">
+  <img src="./assets/rainbow.png" alt="RainbowKit Integration" width="700" />
+</p>
 
 ## Demo
 
