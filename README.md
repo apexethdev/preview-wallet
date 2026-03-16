@@ -32,11 +32,17 @@ From the repository root:
 ```bash
 npm install
 cp apps/next-demo/.env.local.example apps/next-demo/.env.local
-npm run demo:dev
 ```
 
 The demo uses a single env file at `apps/next-demo/.env.local` for both the
 Next.js app and the local wallet sidecar.
+
+Start the demo in separate terminals:
+
+```bash
+npm run demo:dev
+npm run wallet:start
+```
 
 ### 2. Use the package in another app
 

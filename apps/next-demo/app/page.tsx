@@ -14,7 +14,12 @@ PREVIEW_WALLET_RPC_URL=https://sepolia.base.org`;
 
 const commandSnippet = `npm install
 cp apps/next-demo/.env.local.example apps/next-demo/.env.local
-npm run demo:dev`;
+
+# terminal 1
+npm run demo:dev
+
+# terminal 2
+npm run wallet:start`;
 
 export default function Page() {
   const { address, isConnected } = useAccount();
@@ -78,7 +83,7 @@ export default function Page() {
         <h2>Getting started</h2>
         <p>
           From the repo root, install the workspace, copy the demo env file,
-          and boot the app plus wallet sidecar together.
+          then start the app and wallet sidecar in separate terminals.
         </p>
         <pre>
           <code>{commandSnippet}</code>
