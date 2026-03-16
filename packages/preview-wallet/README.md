@@ -1,7 +1,7 @@
 # @preview-wallet/wallet
 
-`@preview-wallet/wallet` is the publishable package that powers the local wallet
-sidecar and browser integration.
+`@preview-wallet/wallet` is the published npm package that powers the local
+wallet sidecar and browser integration.
 
 It provides:
 
@@ -13,7 +13,7 @@ It provides:
 
 ## Consumer usage
 
-Install the package:
+Install the package via npm:
 
 ```bash
 npm install @preview-wallet/wallet

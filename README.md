@@ -1,14 +1,23 @@
 # Preview Wallet
 
-This repository is an npm workspace monorepo centered on the
-`@preview-wallet/wallet` package.
+`@preview-wallet/wallet` is a published npm package for running a local preview
+wallet sidecar and browser host in a Next.js + RainbowKit app.
+
+Install it in another app with:
+
+```bash
+npm install @preview-wallet/wallet
+```
+
+This repository is the source workspace for that package plus the reference
+demo app that consumes it.
 
 It is specifically aimed at in-built preview-browser environments where browser
 extensions are unavailable or awkward, such as Cursor preview tabs and Claude
 Code preview browsers.
 
-The publishable package lives in `packages/preview-wallet`. The reference app
-that consumes it lives in `apps/next-demo`.
+The package source lives in `packages/preview-wallet`. The reference app that
+consumes it lives in `apps/next-demo`.
 
 ## Repository layout
 
@@ -17,10 +26,6 @@ apps/
   next-demo/
 packages/
   preview-wallet/
-integration/
-  next-app-router-wagmi/
-INSTALL_AGENT.md
-USE_AGENT.md
 ```
 
 ## Use this repo
@@ -46,13 +51,15 @@ npm run wallet:start
 
 ### 2. Use the package in another app
 
-Start with [INSTALL_AGENT.md](./INSTALL_AGENT.md).
+Use [apps/next-demo/README.md](./apps/next-demo/README.md) as the integration
+reference. It contains both the runnable demo flow and the package wiring steps
+for another Next.js app.
 
 That flow assumes:
 
 - Next.js App Router
 - existing `wagmi` + RainbowKit providers
-- package-based installation via `@preview-wallet/wallet`
+- install via `npm install @preview-wallet/wallet`
 - an in-built preview browser where you want a local injected wallet without a
   browser extension
 
